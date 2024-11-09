@@ -1,75 +1,62 @@
-REM   Script: Session 05
-REM   EXPERIMENT4
+REM   Script: file 2 ques1
+REM   upload queries
 
-create table employee2(  
- 
-e_id number,  
- 
-e_name varchar2(10),  
- 
-salary number,  
- 
-age number  
- 
-);
+CREATE TABLE Course ( DeptNo NUMBER(2) PRIMARY KEY, Dname VARCHAR2(20), Location VARCHAR2(10) );
 
-insert into employee2 (e_id, e_name, salary, age)  
- 
-values (1, 'Ram', 10000, 21);
+CREATE TABLE Student ( StudentId NUMBER(4) PRIMARY KEY, StudentName VARCHAR2(40) NOT NULL, Address1 VARCHAR2(300), Gender VARCHAR2(15), Course VARCHAR2(8), Deptno NUMBER(2), CONSTRAINT fk_dept FOREIGN KEY (Deptno) REFERENCES Course(DeptNo) );
 
-insert into employee2 (e_id, e_name, salary, age)  
- 
-values (2, 'Shyam', 7000, 24);
+INSERT INTO Course (DeptNo, Dname, Location) VALUES  
+(1, 'Computer Science', 'Delhi');
 
-insert into employee2 (e_id, e_name, salary, age)  
- 
-values (3, 'Hari', 18000, 32);
+INSERT INTO Course (DeptNo, Dname, Location) VALUES (2, 'MBA', 'block B');
 
-insert into employee2 (e_id, e_name, salary, age)  
- 
-values (4, 'Krishna', 9000, 22);
+INSERT INTO Course (DeptNo, Dname, Location) VALUES (3, 'BBA', 'block C');
 
-insert into employee2 (e_id, e_name, salary, age)  
- 
-values (5, 'Avinash', 5000, 19);
+INSERT INTO Course (DeptNo, Dname, Location) VALUES (4, 'MSC', 'block D');
 
-insert into employee2 (e_id, e_name, salary, age)  
- 
-values (6, 'Fahem', 33000, 37);
+INSERT INTO Course (DeptNo,Dname,Location)VALUES(5,'BCOM','block E');
 
-insert into employee2 (e_id, e_name, salary, age)  
- 
-values (7, 'Irman', 3000, 18);
+INSERT INTO Student (StudentId, StudentName, Address1, Gender, Course, Deptno) VALUES (7369, 'Aliya', 'sec 47', 'Female', 'MCA', 1);
 
-select count(*)  
- 
-from employee2;
+INSERT INTO Student (StudentId, StudentName, Address1, Gender, Course, Deptno) VALUES (7777, 'manmeet', 'sec 56', 'Female', 'BCA', 2);
 
-select max(age)  
- 
-from employee2;
+INSERT INTO Student (StudentId, StudentName, Address1, Gender, Course, Deptno) VALUES (2233, 'himani', 'sec 78', 'Female', 'MCA', 3);
 
-select min(salary)  
- 
-from employee2;
+INSERT INTO Student (StudentId, StudentName, Address1, Gender, Course, Deptno) VALUES (3456, 'samra', 'sec 24', 'Female', 'MBA', 4);
 
-select sum(age)  
- 
-from employee2;
+INSERT INTO Student (StudentId, StudentName, Address1, Gender, Course, Deptno) VALUES (5678, 'nidhi', 'sec 34', 'Female', 'BBA', 5);
 
-select avg(salary)  
- 
-from employee2;
+select * from Course  ;
 
-select salary from employee2  
- 
-order by salary asc;
+select * from Student  ;
 
-select salary from employee2  
- 
-order by salary desc;
+SELECT StudentId, Course FROM Student;
 
-select e_name, salary from employee2  
- 
-where age < 29 and salary < 10000;
+SELECT Dname, Location FROM Course;
+
+SELECT * FROM Student WHERE Course = 'MCA';
+
+SELECT StudentName FROM Student WHERE Deptno NOT IN (10, 40);
+
+SELECT StudentName FROM Student WHERE StudentId IN (7369, 7777, 2233);
+
+SELECT StudentName FROM Student WHERE StudentName LIKE 'S%';
+
+SELECT StudentName FROM Student WHERE StudentName LIKE '_k%';
+
+SELECT StudentName FROM Student;
+
+SELECT * FROM Student WHERE Deptno IS NULL;
+
+SELECT * FROM Student ORDER BY Course ASC;
+
+SELECT COUNT(*) FROM Student WHERE Course = 'BCA';
+
+SELECT COUNT(*) FROM Student;
+
+SELECT DISTINCT StudentName FROM Student WHERE Deptno IN (1, 2);
+
+SELECT * FROM Student ORDER BY Course;
+
+SELECT * FROM Student ORDER BY StudentName;
 
